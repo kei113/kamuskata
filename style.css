@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+h1 {
+    color: #1a73e8;
+    margin-bottom: 5px;
+}
+
+p {
+    color: #5f6368;
+    font-size: 0.9em;
+    margin-top: 0;
+}
+
+.kamus-wrapper {
+    margin-top: 25px;
+}
+
+.bahasa-header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+#swap-btn {
+    background: none;
+    position: absolute;
+    border: 2px solid #dadce0;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.5em;
+    width: 50px;
+    height: 50px;
+    color: #1a73e8;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+#swap-btn:hover {
+    background-color: #e8f0fe;
+    transform: rotate(180deg);
+}
+
+#input-kata {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+#input-kata:focus {
+    outline: none;
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 2px #d2e3fc;
+}
+
+#cari-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#cari-btn:hover {
+    background-color: #1558b8;
+}
+
+#hasil-terjemahan {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #3c4043;
+    font-size: 1.1em;
+}

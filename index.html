@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamus Web Binar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Kamus Kata 🇮🇩 🇬🇧</h1>
+        <p>Pencarian Cepat dengan Algoritma Binary Search</p>
+
+        <div class="kamus-wrapper">
+            <div class="bahasa-header">
+                <span id="bahasa-sumber">Indonesia</span>
+                <button id="swap-btn" title="Tukar Bahasa">⇄</button>
+                <span id="bahasa-target">Inggris</span>
+            </div>
+
+            <input type="text" id="input-kata" placeholder="Ketik kata untuk dicari...">
+            <button id="cari-btn">Cari</button>
+
+            <div id="hasil-terjemahan">
+                <p>Hasil terjemahan akan muncul di sini.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="kamus-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
