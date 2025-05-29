@@ -82,7 +82,11 @@ function tukarBahasa() {
 
     // Bersihkan input dan hasil
     inputKata.value = '';
-    hasilTerjemahan.innerHTML = '<p>Hasil terjemahan akan muncul di sini.</p>';
+    if(modeIndonesiaKeInggris) {
+        hasilTerjemahan.innerHTML = '<p>Hasil terjemahan akan muncul di sini.</p>';
+    } else {
+        hasilTerjemahan.innerHTML = '<p>Translation result will appear here.</p>';
+    }
     
     // Ubah placeholder
     if(modeIndonesiaKeInggris){
