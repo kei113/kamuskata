@@ -21,6 +21,13 @@ body {
     width: 90%;
 }
 
+.flag-icon {
+    width: 32px;  /* Atur ukuran ikon bendera */
+    height: auto;
+    vertical-align: middle; /* Membuat ikon sejajar dengan teks */
+    margin-bottom: 4px;
+}
+
 h1 {
     color: #1a73e8;
     margin-bottom: 5px;
