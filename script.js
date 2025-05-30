@@ -63,7 +63,6 @@ inputKata.addEventListener('input', function() {
 function lakukanPencarian() {
     const kataDicari = inputKata.value.trim();
     if (kataDicari === '') {
-        // --- PERUBAHAN DI SINI ---
         if (modeIndonesiaKeInggris) {
             hasilTerjemahan.innerHTML = '<p>Silakan masukkan sebuah kata.</p>';
         } else {
@@ -72,21 +71,37 @@ function lakukanPencarian() {
         return;
     }
 
-
     let hasil;
     if (modeIndonesiaKeInggris) {
-        hasil = binarySearch(dataKamus, kataDicari, 'indonesia');
+        // Menggunakan variabel dataKamus sesuai kode "sebelum" Anda.
+        // PASTIKAN dataKamus ini adalah array yang berisi objek dengan field 'pelafalan'.
+        hasil = binarySearch(dataKamus, kataDicari, 'indonesia'); 
         if (hasil) {
-            hasilTerjemahan.innerHTML = `<p><strong>${hasil.inggris}</strong></p>`;
+            // --- MODIFIKASI UNTUK MENAMPILKAN PELAFALAN ---
+            let htmlOutput = `<p><strong>${hasil.inggris}</strong>`;
+            if (hasil.pelafalan) { // Cek apakah data pelafalan ada
+                htmlOutput += `<br><small style="color: #555;">(dibaca: ${hasil.pelafalan})</small>`;
+            }
+            htmlOutput += `</p>`;
+            hasilTerjemahan.innerHTML = htmlOutput;
+            // --- BATAS MODIFIKASI ---
+
+            // Debugging: Cek isi objek 'hasil' di console browser
+            console.log('Hasil pencarian (ID->EN):', hasil); 
         } else {
-            hasilTerjemahan.innerHTML = `<p>Kata tidak ditemukan.</p>`;
+            hasilTerjemahan.innerHTML = `<p>Kata "${kataDicari}" tidak ditemukan.</p>`;
         }
     } else { // Mode Inggris ke Indonesia
+        // Menggunakan variabel kamusInggrisIndonesia sesuai kode "sebelum" Anda.
+        // Jika ini juga perlu menampilkan pelafalan kata Inggris yang dicari, logikanya mirip.
+        // Namun, biasanya pelafalan ditampilkan untuk kata hasil terjemahan (kata Inggrisnya).
         hasil = binarySearch(kamusInggrisIndonesia, kataDicari, 'inggris');
         if (hasil) {
             hasilTerjemahan.innerHTML = `<p><strong>${hasil.indonesia}</strong></p>`;
+            // Debugging: Cek isi objek 'hasil' di console browser
+            console.log('Hasil pencarian (EN->ID):', hasil);
         } else {
-            hasilTerjemahan.innerHTML = `<p>Word not found.</p>`;
+            hasilTerjemahan.innerHTML = `<p>Word "${kataDicari}" not found.</p>`;
         }
     }
 }
