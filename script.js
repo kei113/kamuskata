@@ -45,13 +45,33 @@ function binarySearch(data, kata, kunci) {
     return null; // Kata tidak ditemukan
 }
 
+inputKata.addEventListener('input', function() {
+    const teksInput = inputKata.value.trim(); // Ambil teks dan hilangkan spasi di awal/akhir
+
+    if (teksInput === ''){
+            if (modeIndonesiaKeInggris) {
+            hasilTerjemahan.innerHTML = '<p>Hasil terjemahan akan muncul di sini.</p>';
+        } else {
+            hasilTerjemahan.innerHTML = '<p>Translation result will appear here.</p>';
+        }
+    }
+    // Anda bisa tambahkan logika lain di sini jika diperlukan saat pengguna mengetik
+    // Misalnya, jika Anda ingin menampilkan saran kata saat input tidak kosong
+});
+
 // Fungsi untuk melakukan pencarian
 function lakukanPencarian() {
     const kataDicari = inputKata.value.trim();
     if (kataDicari === '') {
-        hasilTerjemahan.innerHTML = '<p>Silakan masukkan sebuah kata.</p>';
+        // --- PERUBAHAN DI SINI ---
+        if (modeIndonesiaKeInggris) {
+            hasilTerjemahan.innerHTML = '<p>Silakan masukkan sebuah kata.</p>';
+        } else {
+            hasilTerjemahan.innerHTML = '<p>Please enter a word.</p>';
+        }
         return;
     }
+
 
     let hasil;
     if (modeIndonesiaKeInggris) {
@@ -91,8 +111,10 @@ function tukarBahasa() {
     // Ubah placeholder
     if(modeIndonesiaKeInggris){
         inputKata.placeholder = 'Ketik kata untuk dicari...';
+        cariBtn.textContent = 'Cari';
     } else {
         inputKata.placeholder = 'Type a word to search...';
+        cariBtn.textContent = 'Search';
     }
 }
 
