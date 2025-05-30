@@ -71,35 +71,52 @@ function lakukanPencarian() {
         return;
     }
 
-    let hasil;
-    if (modeIndonesiaKeInggris) {
-        // Menggunakan variabel dataKamus sesuai kode "sebelum" Anda.
-        // PASTIKAN dataKamus ini adalah array yang berisi objek dengan field 'pelafalan'.
+    let hasil; // Variabel untuk menyimpan objek kata yang ditemukan
+
+    if (modeIndonesiaKeInggris) { // Mode: Indonesia -> Inggris
+        // Pastikan 'dataKamus' adalah array yang berisi objek dengan field 'pelafalan' dan 'tipe'.
         hasil = binarySearch(dataKamus, kataDicari, 'indonesia'); 
+
         if (hasil) {
-            // --- MODIFIKASI UNTUK MENAMPILKAN PELAFALAN ---
-            let htmlOutput = `<p><strong>${hasil.inggris}</strong>`;
-            if (hasil.pelafalan) { // Cek apakah data pelafalan ada
+            // --- MEMBANGUN OUTPUT HTML DENGAN PELAFALAN DAN TIPE ---
+            let htmlOutput = `<p><strong>${hasil.inggris}</strong>`; // Tampilkan kata Inggris
+
+            if (hasil.tipe) { // Cek dan tampilkan tipe kata jika ada
+                htmlOutput += ` <span style="font-style: italic; color: #777;">(${hasil.tipe})</span>`;
+            }
+
+            if (hasil.pelafalan) { // Cek dan tampilkan pelafalan jika ada
                 htmlOutput += `<br><small style="color: #555;">(dibaca: ${hasil.pelafalan})</small>`;
             }
             htmlOutput += `</p>`;
             hasilTerjemahan.innerHTML = htmlOutput;
-            // --- BATAS MODIFIKASI ---
+            // --- BATAS PEMBANGUNAN OUTPUT HTML ---
 
-            // Debugging: Cek isi objek 'hasil' di console browser
-            console.log('Hasil pencarian (ID->EN):', hasil); 
+            // SARAN DEBUGGING: Periksa objek 'hasil' di console browser Anda
+            console.log('ID->EN Ditemukan:', hasil); 
+
         } else {
             hasilTerjemahan.innerHTML = `<p>Kata "${kataDicari}" tidak ditemukan.</p>`;
         }
-    } else { // Mode Inggris ke Indonesia
-        // Menggunakan variabel kamusInggrisIndonesia sesuai kode "sebelum" Anda.
-        // Jika ini juga perlu menampilkan pelafalan kata Inggris yang dicari, logikanya mirip.
-        // Namun, biasanya pelafalan ditampilkan untuk kata hasil terjemahan (kata Inggrisnya).
+    } else { // Mode: Inggris -> Indonesia
+        // Pastikan 'kamusInggrisIndonesia' adalah array yang berisi objek dengan 'pelafalan' dan 'tipe'.
         hasil = binarySearch(kamusInggrisIndonesia, kataDicari, 'inggris');
+
         if (hasil) {
-            hasilTerjemahan.innerHTML = `<p><strong>${hasil.indonesia}</strong></p>`;
-            // Debugging: Cek isi objek 'hasil' di console browser
-            console.log('Hasil pencarian (EN->ID):', hasil);
+            // --- MEMBANGUN OUTPUT HTML DENGAN TIPE (DAN PELAFALAN OPSIONAL) ---
+            let htmlOutput = `<p><strong>${hasil.indonesia}</strong>`; // Tampilkan kata Indonesia
+
+            if (hasil.tipe) { // Cek dan tampilkan tipe kata jika ada
+                htmlOutput += ` <span style="font-style: italic; color: #777;">(${hasil.tipe})</span>`;
+            }
+
+            htmlOutput += `</p>`;
+            hasilTerjemahan.innerHTML = htmlOutput;
+            // --- BATAS PEMBANGUNAN OUTPUT HTML ---
+            
+            // SARAN DEBUGGING: Periksa objek 'hasil' di console browser Anda
+            console.log('EN->ID Ditemukan:', hasil);
+
         } else {
             hasilTerjemahan.innerHTML = `<p>Word "${kataDicari}" not found.</p>`;
         }
